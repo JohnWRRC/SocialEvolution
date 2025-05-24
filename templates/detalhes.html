@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes - {{ produto.nome }}{% endblock %}
+
+{% block content %}
+  <div style="text-align: center;">
+    <img src="{{ url_for('static', filename='img/produtos/' + produto.imagem) }}" style="width: 100%; max-width: 400px; border-radius: 8px;">
+    <h2>{{ produto.nome }}</h2>
+    <p>Preço: R$ {{ produto.preco }}</p>
+    <p>{{ produto.descricao }}</p>
+    <br>
+    <a class="botao" href="https://wa.me/+5519996812116?text=Olá, quero comprar: {{ produto.nome }} por R${{ produto.preco }}" target="_blank">Comprar no WhatsApp</a>
+  </div>
+{% endblock %}

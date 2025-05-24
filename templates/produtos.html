@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Produtos - Social Evolutions{% endblock %}
+
+{% block content %}
+  <h2>Todos os Produtos</h2>
+  <div class="categoria">
+    <div class="produtos-grid">
+      <div class="produto">
+        <img src="{{ url_for('static', filename='img/produtos/exemplo.jpg') }}" alt="Produto Exemplo">
+        <h3>Nome do Produto</h3>
+        <div class="botao-container">
+          <a href="#" class="botao">Comprar</a>
+          <a href="#" class="botao">Detalhes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Contato - Social Evolutions{% endblock %}
+
+{% block content %}
+  <h2>Fale Conosco</h2>
+  <form style="max-width: 500px; margin: auto;">
+    <div style="margin-bottom: 10px;">
+      <input type="text" placeholder="Seu nome" style="width: 100%; padding: 10px; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <input type="email" placeholder="Seu e-mail" style="width: 100%; padding: 10px; border-radius: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <textarea placeholder="Sua mensagem" rows="5" style="width: 100%; padding: 10px; border-radius: 5px;"></textarea>
+    </div>
+    <button type="submit" class="botao">Enviar</button>
+  </form>
+{% endblock %}
