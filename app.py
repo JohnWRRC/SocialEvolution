@@ -11,21 +11,21 @@ categorias = {
     "Calças Esporte Fino": [
         {"id": 1, "nome": "Branco Gelo", "preco": 120.0, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
         {"id": 2, "nome": "Cinza Escuro", "preco": 110.0, "imagem": "Cinza.jpeg", "descricao": "Calça elegante na cor Cinza Claro."},
-        {"id": 1, "nome": "Branco Gelo", "preco": 120.0, "imagem": "Calca_Branco_Perola.jpeg", "descricao": "Calça elegante na cor branco gelo."},
-        {"id": 2, "nome": "Cinza Escuro", "preco": 110.0, "imagem": "Calca_Cinza_Claro.jpeg", "descricao": "Calça elegante na cor Cinza Claro."}
+        {"id": 3, "nome": "Branco Gelo", "preco": 120.0, "imagem": "Calca_Branco_Perola.jpeg", "descricao": "Calça elegante na cor branco gelo."},
+        {"id": 4, "nome": "Cinza Escuro", "preco": 110.0, "imagem": "Calca_Cinza_Claro.jpeg", "descricao": "Calça elegante na cor Cinza Claro."}
     ],
     "Ternos Slim Fit ": [
-        {"id": 3, "nome": "Terno Branco", "preco": 399.90, "imagem": "BrancoFrente.jpeg", "descricao": "Terno branco elegante com corte ajustado."},
-        {"id": 4, "nome": "Terno Cinza", "preco": 389.90, "imagem": "Terno_Branco_Costa.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
-        {"id": 4, "nome": "Terno Cinza", "preco": 389.90, "imagem": "CinzaFrente.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
-        {"id": 3, "nome": "Terno Branco", "preco": 399.90, "imagem": "Terno_Cinza_Costa.jpeg", "descricao": "Terno branco elegante com corte ajustado."}
+        {"id": 5, "nome": "Terno Branco", "preco": 399.90, "imagem": "BrancoFrente.jpeg", "descricao": "Terno branco elegante com corte ajustado."},
+        {"id": 6, "nome": "Terno Cinza", "preco": 389.90, "imagem": "Terno_Branco_Costa.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
+        {"id": 7, "nome": "Terno Cinza", "preco": 389.90, "imagem": "CinzaFrente.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
+        {"id": 8, "nome": "Terno Branco", "preco": 399.90, "imagem": "Terno_Cinza_Costa.jpeg", "descricao": "Terno branco elegante com corte ajustado."}
         
     ],
     "Conjunto Clássico": [
-        {"id": 5, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Jeans_Preta.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
-        {"id": 6, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Marron_Cinza.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."},
-        {"id": 5, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Conjunto_CMMarronCCCinza.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
-        {"id": 6, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Conjunto_Jeans_CinzaClaro.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."}
+        {"id": 9, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Jeans_Preta.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
+        {"id": 10, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Marron_Cinza.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."},
+        {"id": 11, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Conjunto_CMMarronCCCinza.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
+        {"id": 12, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Conjunto_Jeans_CinzaClaro.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."}
     ],
     "Novos Produtos": []  # categoria para produtos adicionados via admin
 }
@@ -139,5 +139,7 @@ def logout():
 def contato():
     return render_template('contato.html')
 
+import os
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
