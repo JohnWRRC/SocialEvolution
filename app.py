@@ -1,18 +1,85 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, session
 import os
+import mercadopago
+from flask import jsonify
+from mercadopago import SDK
+
 
 app = Flask(__name__)
 app.secret_key = 'senha-super-secreta'  # segurança mínima
 
 USUARIO = 'admin'
 SENHA = '1234'
+#------------------pagamento------------------------------------------
+# Token e URL pública
+ACCESS_TOKEN = "APP_USR-1522476758336723-052612-4622dc918fca525f5df25c6d9d2f9daf-2036286280"
+NGROK_URL = "https://67f8-186-201-223-74.ngrok-free.app"
+
+# Instancia global do SDK (evita recriar a cada requisição)
+sdk = SDK(ACCESS_TOKEN)
+
+@app.route("/create_preference", methods=["POST"])
+def create_preference():
+    try:
+        data = request.get_json()
+        produto_id = int(data.get("produto_id"))
+
+        produto = buscar_produto_por_id(produto_id)
+        if not produto:
+            return jsonify({"error": "Produto não encontrado"}), 404
+
+        preference_data = {
+            "items": [
+            {
+                "title": produto["nome"],
+                "quantity": 1,
+                "unit_price": float(produto["preco"]),
+                "currency_id": "BRL",
+                "picture_url": f"{NGROK_URL}/static/img/produtos/{produto['imagem']}"
+            }],
+            
+            "back_urls": {
+                "success": f"{NGROK_URL}/success",
+                "failure": f"{NGROK_URL}/failure",
+                "pending": f"{NGROK_URL}/pending"
+            },
+            "auto_return": "approved"
+        }
+
+        preference_response = sdk.preference().create(preference_data)
+        preference = preference_response.get("response", {})
+
+        if "init_point" not in preference:
+            return jsonify({"error": "Erro ao criar link de pagamento"}), 500
+
+        return jsonify({"init_point": preference["init_point"]})
+
+    except Exception as e:
+        print("Erro ao criar preferência:", e)
+        return jsonify({"error": str(e)}), 500
+    
+#--------------------------fim do pagamento------------------------------------------
+#----------resposta do pagamento----------------------------------------------------
+@app.route("/success")
+def success():
+    return "Pagamento aprovado! Obrigado pela compra."
+
+@app.route("/failure")
+def failure():
+    return "Pagamento cancelado ou falhou."
+
+@app.route("/pending")
+def pending():
+    return "Pagamento pendente."
+#----------fim resposta do pagamento--------------------------------------------------
+
 
 categorias = {
     "Calças Esporte Fino": [
-        {"id": 1, "nome": "Branco Gelo", "preco": 120.0, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
-        {"id": 2, "nome": "Cinza Escuro", "preco": 110.0, "imagem": "Cinza.jpeg", "descricao": "Calça elegante na cor Cinza Claro."},
-        {"id": 3, "nome": "Branco Gelo", "preco": 120.0, "imagem": "Calca_Branco_Perola.jpeg", "descricao": "Calça elegante na cor branco gelo."},
-        {"id": 4, "nome": "Cinza Escuro", "preco": 110.0, "imagem": "Calca_Cinza_Claro.jpeg", "descricao": "Calça elegante na cor Cinza Claro."}
+        {"id": 1, "nome": "Calça Branco Gelo", "preco": 120.0, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
+        {"id": 2, "nome": "Calça Cinza Escuro", "preco": 110.0, "imagem": "Cinza.jpeg", "descricao": "Calça elegante na cor Cinza Claro."},
+        {"id": 3, "nome": "Calça Branco Pelora", "preco": 120.0, "imagem": "Calca_Branco_Perola.jpeg", "descricao": "Calça elegante na cor branco gelo."},
+        {"id": 4, "nome": "Calça Cinza Claro", "preco": 110.0, "imagem": "Calca_Cinza_Claro.jpeg", "descricao": "Calça elegante na cor Cinza Claro."}
     ],
     "Ternos Slim Fit ": [
         {"id": 5, "nome": "Terno Branco", "preco": 399.90, "imagem": "BrancoFrente.jpeg", "descricao": "Terno branco elegante com corte ajustado."},
@@ -142,4 +209,4 @@ def contato():
 import os
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port,debug=True)

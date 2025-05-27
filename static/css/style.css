@@ -186,4 +186,58 @@ h2 {
     padding: 15px;
     border-radius: 10px;
   }
+
+  .botao {
+  background: #28a745;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  display: block; /* Importante para links, mas vamos ajustar */
+  transition: background-color 0.3s;
+  cursor: pointer; /* Adicione para melhor UX */
+}
+
+.botao {
+  background: #28a745;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  display: block; /* Importante para links, mas vamos ajustar */
+  transition: background-color 0.3s;
+  cursor: pointer; /* Adicione para melhor UX */
+}
+
+.botao:hover {
+  background: #1e7e34;
+}
+
+.botoes-compra {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+   background-color: red !important;
+  border: 2px solid yellow !important;
+  color: white !important;
+  padding: 10px 20px;
+  display: inline-block !important;
+  cursor: pointer;
+}
+
+/* Ajustar display para botão e link ficarem lado a lado */
+.botoes-compra .botao {
+  display: inline-block; /* Para ficar lado a lado */
+  min-width: 180px;
+  padding: 12px 20px;
+  font-size: 16px;
+  user-select: none;
+}
+
 }

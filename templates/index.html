@@ -19,10 +19,39 @@
             <div class="botao-container">
               <a class="botao" href="{{ url_for('detalhes', produto_id=p.id) }}">Ver detalhes</a>
               <a class="botao" href="https://wa.me/+5519996812116?text=Olá, quero comprar: {{ p.nome }} por R${{ p.preco }}" target="_blank">Comprar no WhatsApp</a>
+              <!-- Novo botão Mercado Pago -->
+              <button onclick="comprarMercadoPago({{ p.id }})" class="botao" id="btn-mp-{{ p.id }}">Comprar com Mercado Pago</button>
             </div>
           </div>
         {% endfor %}
       </div>
     </div>
   {% endfor %}
+<!-- SDK do Mercado Pago (coloque no <head> ou antes do </body>) -->
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<script>
+  function comprarMercadoPago(produtoId) {
+    fetch("/create_preference", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ produto_id: produtoId })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.init_point) {
+        window.location.href = data.init_point; // redireciona para o Checkout Pro
+      } else {
+        alert("Erro ao criar link de pagamento");
+      }
+    })
+    .catch(error => {
+      console.error("Erro na requisição:", error);
+      alert("Erro ao criar preferência");
+    });
+  }
+</script>
+
 {% endblock %}
