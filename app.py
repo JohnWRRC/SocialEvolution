@@ -38,7 +38,7 @@ def create_preference():
                     "quantity": 1,
                     "unit_price": float(produto["preco"]),
                     "currency_id": "BRL",
-                    "picture_url": f"{NGROK_URL}/static/img/produtos/{produto['imagem']}"
+                    "picture_url": f"https://socialevolution.onrender.com/static/img/produtos/{produto['imagem']}"
                 }
             ],
             
