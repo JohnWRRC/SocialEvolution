@@ -80,7 +80,7 @@ def pending():
 
 categorias = {
     "Calças Esporte Fino": [
-        {"id": 1, "nome": "Calça Branco Gelo", "preco": 120.0, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
+        {"id": 1, "nome": "Calça Branco Gelo", "preco": 5, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
         {"id": 2, "nome": "Calça Cinza Escuro", "preco": 110.0, "imagem": "Cinza.jpeg", "descricao": "Calça elegante na cor Cinza Claro."},
         {"id": 3, "nome": "Calça Branco Pelora", "preco": 120.0, "imagem": "Calca_Branco_Perola.jpeg", "descricao": "Calça elegante na cor branco gelo."},
         {"id": 4, "nome": "Calça Cinza Claro", "preco": 110.0, "imagem": "Calca_Cinza_Claro.jpeg", "descricao": "Calça elegante na cor Cinza Claro."}
@@ -93,7 +93,7 @@ categorias = {
         
     ],
     "Conjunto Clássico": [
-        {"id": 9, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Jeans_Preta.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
+        {"id": 9, "nome": "Calça Jeans & Camisa Xumbo", "preco": 5, "imagem": "Jeans_Preta.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
         {"id": 10, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Marron_Cinza.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."},
         {"id": 11, "nome": "Calça Jeans & Camisa Xumbo", "preco": 299.90, "imagem": "Conjunto_CMMarronCCCinza.jpeg", "descricao": "Conjunto cinza elegante com camisa e calça."},
         {"id": 12, "nome": "Calça Marron & Camisa Cinza", "preco": 299.90, "imagem": "Conjunto_Jeans_CinzaClaro.jpeg", "descricao": "Look estiloso com camisa marrom e calça cinza."}
