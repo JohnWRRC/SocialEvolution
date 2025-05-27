@@ -13,7 +13,8 @@ SENHA = '1234'
 #------------------pagamento------------------------------------------
 # Token e URL pública
 ACCESS_TOKEN = "APP_USR-1522476758336723-052612-4622dc918fca525f5df25c6d9d2f9daf-2036286280"
-NGROK_URL = "https://67f8-186-201-223-74.ngrok-free.app"
+#NGROK_URL = "https://67f8-186-201-223-74.ngrok-free.app"
+NGROK_URL = "https://socialevolution.onrender.com"
 
 # Instancia global do SDK (evita recriar a cada requisição)
 sdk = SDK(ACCESS_TOKEN)
