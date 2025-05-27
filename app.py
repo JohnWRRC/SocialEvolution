@@ -28,16 +28,19 @@ def create_preference():
         produto = buscar_produto_por_id(produto_id)
         if not produto:
             return jsonify({"error": "Produto não encontrado"}), 404
-
+        
+        
+        print("Imagem do produto:", f"{NGROK_URL}/static/img/produtos/{produto['imagem']}")
         preference_data = {
-            "items": [
-            {
-                "title": produto["nome"],
-                "quantity": 1,
-                "unit_price": float(produto["preco"]),
-                "currency_id": "BRL",
-                "picture_url": f"{NGROK_URL}/static/img/produtos/{produto['imagem']}"
-            }],
+        "items": [
+                {
+                    "title": produto["nome"],
+                    "quantity": 1,
+                    "unit_price": float(produto["preco"]),
+                    "currency_id": "BRL",
+                    "picture_url": f"{NGROK_URL}/static/img/produtos/{produto['imagem']}"
+                }
+            ],
             
             "back_urls": {
                 "success": f"{NGROK_URL}/success",
