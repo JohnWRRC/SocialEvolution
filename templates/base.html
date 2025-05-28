@@ -3,41 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Social Evolution{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adicionado para responsividade -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
   <header>
+    <nav class="menu">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul id="menu-items" class="menu-items">
+        <li><a href="{{ url_for('index') }}">Início</a></li>
+        <li><a href="{{ url_for('produtos') }}">Produtos</a></li>
+        <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      </ul>
+    </nav>
     <img src="{{ url_for('static', filename='img/BanerLogo/logo.PNG') }}" alt="Logo Social Evolutions" class="logo">
     <div class="titulo-banner">Social-<span style="color:#fff">Evolution</span></div>
   </header>
 
-  <nav class="menu">
-    <ul>
-      <li><a href="{{ url_for('index') }}">Início</a></li>
-      <li><a href="{{ url_for('produtos') }}">Produtos</a></li>
-      <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
-      <li><a href="{{ url_for('contato') }}">Contato</a></li>
-    </ul>
-  </nav>
-
   <div class="container">
     {% block content %}{% endblock %}
   </div>
-    <script>
-    setTimeout(function() {
-        // Remove o símbolo da estrela
-        document.querySelectorAll('.categoria[data-categoria="Novos Produtos"] .titulo-categoria').forEach(function(titulo) {
-        titulo.innerHTML = titulo.innerHTML.replace('⭐ ', '');
-        });
 
-        // Remove a classe de destaque do primeiro produto da categoria "Novos Produtos"
-        document.querySelectorAll('.categoria[data-categoria="Novos Produtos"] .produto').forEach(function(produto, index) {
+  <script>
+    setTimeout(function() {
+      document.querySelectorAll('.categoria[data-categoria="Novos Produtos"] .titulo-categoria').forEach(function(titulo) {
+        titulo.innerHTML = titulo.innerHTML.replace('⭐ ', '');
+      });
+
+      document.querySelectorAll('.categoria[data-categoria="Novos Produtos"] .produto').forEach(function(produto, index) {
         if (index === 0) {
-            produto.classList.remove('destaque-novidade');
+          produto.classList.remove('destaque-novidade');
         }
-        });
-    }, 60000); // 60 segundos
-    </script>
+      });
+    }, 60000);
+
+    function toggleMenu() {
+      const menu = document.getElementById("menu-items");
+      menu.classList.toggle("menu-open");
+    }
+  </script>
+
 </body>
 </html>

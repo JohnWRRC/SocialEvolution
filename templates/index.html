@@ -17,10 +17,10 @@
             <img src="{{ url_for('static', filename='img/produtos/' + p.imagem) }}" alt="{{ p.nome }}">
             <h3 style="color: #0c110e;">{{ p.nome }} — R$ {{ p.preco }}</h3>
             <div class="botao-container">
-              <a class="botao" href="{{ url_for('detalhes', produto_id=p.id) }}">Ver detalhes</a>
+              
               <a class="botao" href="https://wa.me/+5519996812116?text=Olá, quero comprar: {{ p.nome }} por R${{ p.preco }}" target="_blank">Comprar no WhatsApp</a>
               <!-- Novo botão Mercado Pago -->
-              <button onclick="comprarMercadoPago({{ p.id }})" class="botao" id="btn-mp-{{ p.id }}">Comprar com Mercado Pago</button>
+              <button onclick="comprarMercadoPago({{ p.id }})" class="botao" id="btn-mp-{{ p.id }}">COMPRAR COM MERCADO PAGO</button>
             </div>
           </div>
         {% endfor %}

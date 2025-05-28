@@ -10,6 +10,9 @@ app.secret_key = 'senha-super-secreta'  # segurança mínima
 
 USUARIO = 'admin'
 SENHA = '1234'
+
+
+
 #------------------pagamento------------------------------------------
 # Token e URL pública
 ACCESS_TOKEN = "APP_USR-1522476758336723-052612-4622dc918fca525f5df25c6d9d2f9daf-2036286280"
@@ -77,7 +80,14 @@ def pending():
     return "Pagamento pendente."
 #----------fim resposta do pagamento--------------------------------------------------
 
-
+@app.before_request
+def redirect_to_https():
+    if not request.is_secure and not app.debug:
+        url = request.url.replace("http://", "https://", 1)
+        return redirect(url, code=301)
+    
+    
+    
 categorias = {
     "Calças Esporte Fino": [
         {"id": 1, "nome": "Calça Branco Gelo", "preco": 5, "imagem": "BrancoGelo.jpeg", "descricao": "Calça elegante na cor branco gelo."},
@@ -160,7 +170,7 @@ def painel_admin():
 
     return render_template('admin.html')
 
-@app.route('/')
+
 @app.route('/')
 def index():
     busca = request.args.get("busca", "").lower()
