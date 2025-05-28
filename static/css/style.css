@@ -29,6 +29,16 @@ header {
   flex-wrap: wrap;
 }
 
+header {
+  background-image: url("/static/img/BanerLogo/backgroundHeader.jpg"); /* Caminho relativo */
+  background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 20px;
+  position: relative;
+}
+
 header img.logo {
   align-items: center;
   height: 60px;
@@ -36,6 +46,7 @@ header img.logo {
   object-fit: cover;
   flex-shrink: 10;
 }
+
 
 .titulo-banner {
   font-size: 50px;
@@ -179,10 +190,15 @@ nav.menu ul li a:hover {
 }
 
 /* -------- RESPONSIVO -------- */
+
+
+
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
   }
 
   .titulo-banner {
@@ -198,12 +214,16 @@ nav.menu ul li a:hover {
     display: block;
   }
 
+  nav.menu {
+    width: 100%;
+  }
+
   nav.menu ul {
     display: none;
     flex-direction: column;
     background-color: #333;
-    position: absolute;
-    top: 100%;
+    
+    
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -215,7 +235,6 @@ nav.menu ul li a:hover {
 
   nav.menu ul li {
     border-top: 1px solid #444;
-    width: 100%;
-    text-align: center;
+    
   }
 }
