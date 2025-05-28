@@ -19,25 +19,22 @@ body {
 header {
   width: 100%;
   max-width: 1200px;
-  background-color: #222;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  flex-wrap: wrap;
-}
-
-header {
-  background-image: url("/static/img/BanerLogo/backgroundHeader.jpg"); /* Caminho relativo */
-  background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+  background-image: url("/static/img/BanerLogo/backgroundHeader.jpg");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
   padding: 20px;
-  position: relative;
+  position: relative; /* necessário para posicionar menu internamente */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
 }
+
+
+
 
 header img.logo {
   align-items: center;
@@ -199,11 +196,13 @@ nav.menu ul li a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    position: relative;
   }
 
   .titulo-banner {
     font-size: 24px;
-    margin-top: 10px;
+    margin: 0 auto;
+    padding: 6px 12px;
   }
 
   .produto img {
@@ -212,6 +211,11 @@ nav.menu ul li a:hover {
 
   .menu-toggle {
     display: block;
+    font-size: 32px; /* maior */
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 1100;
   }
 
   nav.menu {
@@ -222,11 +226,14 @@ nav.menu ul li a:hover {
     display: none;
     flex-direction: column;
     background-color: #333;
-    
-    
-    left: 0;
-    width: 100%;
+    position: absolute;
+    top: 60px; /* espaço abaixo do header */
+    right: 0; /* alinha à direita */
+    width: 75%; /* maior, mas não ocupa tudo */
+    max-width: 300px;
     z-index: 1000;
+    border-radius: 0 0 0 8px;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.4);
   }
 
   nav.menu ul.menu-open {
@@ -235,6 +242,12 @@ nav.menu ul li a:hover {
 
   nav.menu ul li {
     border-top: 1px solid #444;
-    
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  nav.menu ul li a {
+    padding: 12px 16px;
+    font-size: 18px;
   }
 }
