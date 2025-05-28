@@ -186,6 +186,31 @@ nav.menu ul li a:hover {
   right: 15px;
 }
 
+.produto {
+    position: relative; /* necessário para posicionar o botão dentro */
+  }
+
+  .botao-conferir-img {
+    position: absolute;
+    top: 12px;
+    right: 13px;
+    background-color: #28a745; /* verde */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+
+  .botao-conferir-img:hover {
+    background-color: #218838;
+  }
+
 /* -------- RESPONSIVO -------- */
 
 

@@ -97,9 +97,9 @@ categorias = {
     ],
     "Ternos Slim Fit ": [
         {"id": 5, "nome": "Terno Branco", "preco": 399.90, "imagem": "BrancoFrente.jpeg", "descricao": "Terno branco elegante com corte ajustado."},
-        {"id": 6, "nome": "Terno Cinza", "preco": 389.90, "imagem": "Terno_Branco_Costa.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
+        {"id": 6, "nome": "Terno Branco", "preco": 389.90, "imagem": "Terno_Branco_Costa.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
         {"id": 7, "nome": "Terno Cinza", "preco": 389.90, "imagem": "CinzaFrente.jpeg", "descricao": "Terno cinza moderno, ideal para eventos formais."},
-        {"id": 8, "nome": "Terno Branco", "preco": 399.90, "imagem": "Terno_Cinza_Costa.jpeg", "descricao": "Terno branco elegante com corte ajustado."}
+        {"id": 8, "nome": "Terno Cinza", "preco": 399.90, "imagem": "Terno_Cinza_Costa.jpeg", "descricao": "Terno branco elegante com corte ajustado."}
         
     ],
     "Conjunto Clássico": [

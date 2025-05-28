@@ -9,6 +9,10 @@
     <p>Preço: R$ {{ produto.preco }}</p>
     <p>{{ produto.descricao }}</p>
     <br>
-    <a class="botao" href="https://wa.me/+5519996812116?text=Olá, quero comprar: {{ produto.nome }} por R${{ produto.preco }}" target="_blank">Comprar no WhatsApp</a>
+    
+    <div class="botao-container">
+      <button onclick="comprarMercadoPago({{ produto.id }})" class="botao" id="btn-mp-{{ produto.id }}">COMPRAR COM MERCADO PAGO</button>
+      <a class="botao" href="https://wa.me/+5519996812116?text=Olá, quero comprar: {{ produto.nome }} por R${{ produto.preco }}" target="_blank">Comprar no WhatsApp</a>
+    </div>
   </div>
 {% endblock %}
